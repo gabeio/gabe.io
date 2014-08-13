@@ -14,13 +14,10 @@
 <div class="row">
 	<div class="col-md-3 pull-right">
 		<ul class="list-unstyled">
-			{% if !links %}
-				{% set links = blog %}
-			{% endif %}
 			{% for entry in links %}
 				{% if entry.date != last %}
 					{% if !loop.first %}
-				</ul><li class="divider"></li>
+				</ul></li>
 					{% endif %}
 			</li>
 			<li>
@@ -28,19 +25,26 @@
 				<ul class="list-group">
 				{% endif%}
 				{% set last = entry.date %}
-					{#<li class="list-group-item">#}
-				{% if loop.index < 25 and !full %}
-						<a class="list-group-item" href="#{{ entry.title }}">{{ entry.title }}</a>
+				{% if loop.index < 25 and full %}
+						<a class="list-group-item" href="#{{ entry.title|safe }}">{{ entry.title }}</a>
 				{% else %}
-						<a class="list-group-item" href="/blog/{{ entry.date }}">{{ entry.title }}</a>
+						<a class="list-group-item" href="/d/{{ entry.date|safe }}">{{ entry.title }}</a>
 				{% endif %}
-					{#</li>#}
+			{% endfor %}
+		</ul>
+		<h5>Tags</h5>
+		<ul class="list-unstyled list-group">
+			{% for tag,entry in tags %}
+			<li><a class="list-group-item" href="/t/{{ tag }}">{{ tag }}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
 	<div class="col-md-9">
 		<div class="row">
-			{% for entry in blog %}
+			{% if !entries %}
+			{% set entries = blog %}
+			{% endif %}
+			{% for entry in entries %}
 				{% if loop.index < 25 or search %}
 					{% if entry.content and !entry.private %}
 						{% if !loop.first %}
@@ -49,7 +53,7 @@
 			<div class="col-md-12" id="{{ entry.title }}">
 				<div class="row">
 					<div class="col-md-12">
-						<h3>{{ entry.title }}</h3>
+						<h3>{{ entry.title|safe }}</h3>
 						{{ entry.content|safe }}
 					</div>
 				</div>
