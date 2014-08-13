@@ -42,7 +42,7 @@
 	<div class="col-md-9">
 		<div class="row">
 			{% if !entries %}
-			{% set entries = blog %}
+				{% set entries = blog %}
 			{% endif %}
 			{% for entry in entries %}
 				{% if loop.index < 25 or search %}
