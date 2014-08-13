@@ -1,5 +1,5 @@
 {% extends './html.swig' %}
-{% set title = "gabe.io - Home" %}
+{% set title = "gabe.io" %}
 
 
 
@@ -33,9 +33,9 @@
 			{% endfor %}
 		</ul>
 		<h5>Tags</h5>
-		<ul class="list-unstyled list-group">
+		<ul class="list-group">
 			{% for tag,entry in tags %}
-			<li><a class="list-group-item" href="/t/{{ tag }}">{{ tag }}</a></li>
+			<a class="list-group-item" href="/t/{{ tag }}">{{ tag }}</a>
 			{% endfor %}
 		</ul>
 	</div>

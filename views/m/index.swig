@@ -1,5 +1,5 @@
 {% extends './html.swig' %}
-{% set title = "gabe.io - Home" %}
+{% set title = "gabe.io" %}
 
 
 
