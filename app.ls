@@ -1,6 +1,6 @@
 #!/usr/env lsc
 
-require! <[ fs swig express compression response-time request crypto ]>
+require! <[ fs swig express compression response-time crypto ]>
 require! yargs.argv
 yaml = require \js-yaml
 app = express()
