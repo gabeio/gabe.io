@@ -33,11 +33,9 @@ app.locals.links = blog
 
 dates = {}
 for entry in blog
-	console.log entry.date
 	if !dates[entry.date]?
 		dates[entry.date] = []
 	dates[entry.date].push entry
-console.log JSON.stringify dates
 app.locals.dates = dates
 
 tags = {}

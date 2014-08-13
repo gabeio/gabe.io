@@ -6,7 +6,7 @@
     Just incase you didn't know what <a href="http://LiveScript.net">LiveScript</a> was, it's a beautifully designed language
     which allows for so much more elegance than either javascript or coffeescript could manage. It allows for backcalls,
     <code>for</code> loops <code>of</code> lists, objects, and only run the loop <code>when</code> x is true. Just a simply amazing language I just have fallen in love with.
-  date: "August 13 2014"
+  date: "August-13-2014"
   author: "Gabe"
   tags: ['LiveScript','coffeescript','runnable']
 - 
@@ -15,5 +15,5 @@
     Just a quick entry to say hi again to my friends who actually visit my little site here.
     I am happy to say that I have had enough time to put together a really quick and dirty blog
     It's not really anything serious just trying to get some traffic again.
-  date: "August 12 2014"
+  date: "August-12-2014"
   author: "Gabe"

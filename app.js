@@ -25,13 +25,11 @@ app.locals.links = blog;
 dates = {};
 for (i$ = 0, len$ = blog.length; i$ < len$; ++i$) {
   entry = blog[i$];
-  console.log(entry.date);
   if (dates[entry.date] == null) {
     dates[entry.date] = [];
   }
   dates[entry.date].push(entry);
 }
-console.log(JSON.stringify(dates));
 app.locals.dates = dates;
 tags = {};
 for (i$ = 0, len$ = blog.length; i$ < len$; ++i$) {
