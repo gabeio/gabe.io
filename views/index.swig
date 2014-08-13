@@ -34,8 +34,8 @@
 		</ul>
 		<h5>Tags</h5>
 		<ul class="list-group">
-			{% for tag,entry in tags %}
-			<a class="list-group-item" href="/t/{{ tag }}">{{ tag }}</a>
+			{% for tag,entries in tags %}
+			<a class="list-group-item" href="/t/{{ tag }}">{{ tag }}<span class="badge pull-right">{{entries.length}}</span></a>
 			{% endfor %}
 		</ul>
 	</div>
