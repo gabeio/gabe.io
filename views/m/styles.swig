@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="/assets/css/ratchet.min.css?c={{cachekey}}">
