@@ -18,7 +18,8 @@
     Wrote a small tutorial of LiveScript + Expressjs on <a href="http://runnable.com/me/U-sxm8m9AJtCfCdI">runnable</a>.
     Just incase you didn't know what <a href="http://LiveScript.net">LiveScript</a> was, it's a beautifully designed language
     which allows for so much more elegance than either javascript or coffeescript could manage. It allows for backcalls,
-    <code>for</code> loops <code>of</code> lists, objects, and only run the loop <code>when</code> x is true. Just a simply amazing language I just have fallen in love with.
+    <code>for</code> loops <code>of</code> lists, objects, and only run the loop <code>when</code> x is true. Just a simply
+    amazing language I just have fallen in love with.
   date: "August-13-2014"
   author: "Gabe"
   tags: ['LiveScript','coffeescript','runnable']
