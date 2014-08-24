@@ -22,6 +22,8 @@ main: './app.ls'
 scripts:
 	build: 'livescript -cb *.ls'
 	start: 'node app.js'
+	test: 'nodeunit test'
+	coveralls: 'jscoverage lib && YOURPACKAGE_COVERAGE=1 nodeunit --reporter=lcov test | coveralls'
 
 repository:
 	type: 'git'
@@ -35,3 +37,8 @@ dependencies:
 	'js-yaml': '3.1.x'
 	LiveScript: '1.2.x'
 	'response-time': '2.0.x'
+
+devDependencies:
+	coveralls: '2.11.x'
+	jscoverage: '0.5.x'
+	nodeunit: '0.9.x'
