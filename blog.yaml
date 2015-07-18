@@ -1,4 +1,4 @@
---- 
+---
 -
   title: "An Education Platform"
   content: |
@@ -12,7 +12,7 @@
     a blog area for teachers to directly push updates/info to students without extra clutter like comments
     from other students which should be addressed withing the forum area and so much more!
   date: "July-17-2014"
-  tags: ['coding','education]
+  tags: ['coding','education']
 -
   title: "Camp Fatima of NJ"
   content: |
@@ -52,7 +52,7 @@
   date: "August-13-2014"
   author: "Gabe"
   tags: ['LiveScript','coffeescript','runnable']
-- 
+-
   title: "the Beginning"
   content: |
     Just a quick entry to say hi again to my friends who actually visit my little site here.
