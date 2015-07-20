@@ -24,7 +24,7 @@
     The <code>-a</code> flag literally means archive.
     The <code>-v</code> is standard verbose.
     The <code>-z</code> is compress which can help with speed.</p>
-    <h3>Please read this it's imporant</h3>
+    <h4>Please read this it's imporant</h4>
     A git repo which you can see your files is a normal git repository which git stores it's bare repository in the
     .git directory (so you don't have to see it do it's magic). So a bare repo is essentially just the .git without
     any of your files showing, there are more differences but that is what you need to know to continue. 
