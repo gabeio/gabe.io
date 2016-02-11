@@ -1,34 +1,60 @@
 #!/usr/env lsc
-
-require! <[ fs swig express compression response-time crypto ]>
-require! yargs.argv
-yaml = require \js-yaml
-app = express()
+start = new Date Date.now! .toString!
+require! {
+	"compression"
+	"crypto"
+	"express"
+	"fs"
+	"helmet"
+	"js-yaml"
+	"response-time"
+	"swig"
+	"yargs"
+}
+argv = yargs.argv
+app = express!
 var cachekey
-start = new Date Date.now() .toString()
 app.locals.cachekey = crypto.createHash \sha512 .update start .digest \base64
-# swig template engine
-# compress output
-# response-time should be interesting
-# disable powered-by
+
 app
-.engine \swig, swig.renderFile
-.set 'view engine', \swig
-.set \views, __dirname+\/views
-.use compression()
-.use response-time()
-.disable \x-powered-by
-.use '/assets', express.static __dirname + '/assets'
+.engine "swig" swig.renderFile
+# set extention of templates to html
+.set "view engine" "swig"
+.use helmet!
+.use helmet.contentSecurityPolicy {
+	default-src: ["\"self\"",
+		"maxcdn.bootstrapcdn.com",
+		"cdnjs.cloudflare.com"
+	]
+	script-src:  ["\"self\"",
+		"maxcdn.bootstrapcdn.com",
+		"cdnjs.cloudflare.com"
+	]
+	style-src:   ["\"self\"",
+		"maxcdn.bootstrapcdn.com",
+		"cdnjs.cloudflare.com",
+		"fonts.googleapis.com"
+	]
+	font-src:    ["\"self\"",
+		"maxcdn.bootstrapcdn.com",
+		"cdnjs.cloudflare.com",
+		"fonts.googleapis.com",
+		"fonts.gstatic.com"
+	]
+}
+.use helmet.frameguard "deny"
+.use compression!
+.use response-time!
+.use "/assets", express.static __dirname + "/assets"
 .use (req,res,next)->
-	if /mobile/i.test req.header('user-agent')
+	if /mobile/i.test req.header "user-agent"
 		req.ismobile = true
 	else
 		req.ismobile = false
 	res.locals.url = req.url
-	next()
+	next!
 
-
-blog = yaml.safeLoad fs.readFileSync \./blog.yaml, \utf8
+blog = jsYaml.safeLoad fs.readFileSync \./blog.yaml, \utf8
 app.locals.blog = blog
 app.locals.links = blog
 
@@ -53,43 +79,43 @@ for entry in blog when entry.tags?
 app.locals.tags = tags
 
 app
-	..route '/'
+	..route "/"
 	.get (req,res,next)->
 		if req.ismobile
-			next()
+			next!
 		else
 			res.locals.full = true
-			res.render 'index'
+			res.render "index"
 	# mobile load max 7
 	.get (req,res,next)->
 		res.locals.entries = blog
-		res.render 'm/index'
+		res.render "m/index"
 
 	# get specific tag
-	..route '/t/:tag'
+	..route "/t/:tag"
 	.get (req,res,next)->
 		if req.ismobile
-			res.redirect '/'
+			res.redirect "/"
 		else
 			res.locals.entries = tags[req.params.tag]
-			res.render 'index'
+			res.render "index"
 
 	# get specific date
-	..route '/d/:date'
+	..route "/d/:date"
 	.get (req,res,next)->
 		if req.ismobile
-			res.redirect '/'
+			res.redirect "/"
 		else
 			res.locals.entries = dates[req.params.date]
-			res.render 'index'
+			res.render "index"
 
 	# get single entry
-	..route '/e/:title'
+	..route "/e/:title"
 	.get (req,res,next)->
 		if !req.ismobile
-			next('route') # error
+			next "route" # error
 		else
 			res.locals.entry = titles[req.params.title]
-			res.render 'm/entry'
+			res.render "m/entry"
 
 	..listen Number process.env.PORT || argv.http || 1337
